@@ -153,7 +153,7 @@ In all three experiments, $\nu_k$ remains at $\nu_{\min}$ after reaching it.
 | $\rho$ | $2/n$ | $0.6/n$ | $0.5/n$ |
 | $\beta$ | $6\rho+10^{-8}$ | $6\rho+10^{-8}$ | $10\rho+10^{-8}$ |
 | Main $(\alpha,t)$ | $(15,1.5)$ | $(15,1.5)$ | $(15,1.5)$ |
-| Additional signal setting | $(2,1)$ with one restart after $1000$ updates | - | - |
+| Additional signal setting | $(\alpha,t)=(2,1)$ with one restart after $1000$ updates | - | - |
 | $N_{\mathrm{max}}$ | $500$; $2000$ for illustrative recovery | $200,300,400,500,600$ | $500$ |
 | Stopping tolerance $\varepsilon_{\mathrm{stop}}$ | $2\times10^{-4}$ | $2\times10^{-4}$ | $4\times10^{-4}$ |
 | Maximum effective updates $K_{\mathrm{max}}$ | $20000$ | $20000$ | $20000$ |
