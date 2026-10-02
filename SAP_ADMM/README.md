@@ -2,7 +2,7 @@
 
 This repository uses **SAP-ADMM to solve signal denoising and image denoising problems** from *A Safeguarded Accelerated Proximal ADMM Algorithm for Solving Structured Cardinality Penalized Optimization Problems*, by Wei Bian, Hongyuan Tao, and Fan Wu.
 
-The main experiments use $\alpha=15$ and $t=1.5$. The signal comparison also uses SAP-ADMM with $\alpha=2$, $t=1$, and one restart after $1000$ effective updates. This parameter setting is labeled SAP-ADMM-H in the output files. The function `sap_admm_halpern` selects this setting.
+The main experiments use $\alpha=15$ and $t=1.5$. The signal comparison also uses SAP-ADMM with $\alpha=2$, $t=1$, and one restart after $1000$ effective updates. This parameter setting is labeled SAP-ADMM<sup>H</sup> in the output files. The function `sap_admm_halpern` selects this setting.
 
 ## Optimization problems
 
