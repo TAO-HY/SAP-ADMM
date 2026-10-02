@@ -265,7 +265,7 @@ scripts for automatic plotting and editable quick-mode settings.
 
 The figures follow the style of the supplied comparison-experiment plots:
 Times-style serif fonts, blue solid lines for SAP-ADMM, gray dashed lines for
-SAP-ADMM-H, shared legends, and light dashed grids. Signal plots show the
+SAP-ADMM<sup>H</sup>, shared legends, and light dashed grids. Signal plots show the
 mean F1 score with a one-sample-standard-deviation band; stacked bars show
 the same four F1 categories with percentage labels. The general-A figure
 shows mean F1, mean iteration count, and mean MSE from left to right.
@@ -313,7 +313,7 @@ Paths in this section and the tables below are relative to the inner `SAP_ADMM/`
 | Experiment | Configuration file | Solver entry point | Paper results |
 | --- | --- | --- | --- |
 | Signal, $(\alpha,t)=(15,1.5)$ | `experiments/config/signal.json` | `sap_admm` | Signal MSE, time, and support recovery |
-| Signal, $(\alpha,t)=(2,1)$ with restart | Same configuration; `restart_iter=1000` | `sap_admm_halpern` | SAP-ADMM-H signal entries |
+| Signal, $(\alpha,t)=(2,1)$ with restart | Same configuration; `restart_iter=1000` | `sap_admm_halpern` | SAP-ADMM<sup>H</sup> signal entries |
 | General $A$ | `experiments/config/general_a.json` | `sap_admm_generalA` | Sensitivity to $N_{\mathrm{max}}$ |
 | MNIST | `experiments/config/mnist.json`, nested `admm` settings | `sap_admm_image` | SAP-ADMM image-quality entries |
 
