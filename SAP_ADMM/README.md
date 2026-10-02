@@ -123,7 +123,7 @@ with
 \end{cases}
 ```
 
-The code condition is `bar_count < 4000` in `src/sap_admm/general_a.py`. Because this counter starts at zero, the first $4000$ effective updates use $0.9995$.
+The code condition is `bar_count < 4000` in `SAP_ADMM/src/sap_admm/general_a.py`. Because this counter starts at zero, the first $4000$ effective updates use $0.9995$.
 
 ### MNIST image denoising
 
@@ -153,7 +153,7 @@ In all three experiments, $\nu_k$ remains at $\nu_{\min}$ after reaching it.
 | $\rho$ | $2/n$ | $0.6/n$ | $0.5/n$ |
 | $\beta$ | $6\rho+10^{-8}$ | $6\rho+10^{-8}$ | $10\rho+10^{-8}$ |
 | Main $(\alpha,t)$ | $(15,1.5)$ | $(15,1.5)$ | $(15,1.5)$ |
-| Additional signal setting | $(2,1)$ with one restart after $1000$ updates | - | - |
+| Additional signal setting | $(\alpha,t)=(2,1)$ with one restart after $1000$ updates | - | - |
 | $N_{\mathrm{max}}$ | $500$; $2000$ for illustrative recovery | $200,300,400,500,600$ | $500$ |
 | Stopping tolerance $\varepsilon_{\mathrm{stop}}$ | $2\times10^{-4}$ | $2\times10^{-4}$ | $4\times10^{-4}$ |
 | Maximum effective updates $K_{\mathrm{max}}$ | $20000$ | $20000$ | $20000$ |
@@ -207,9 +207,6 @@ Convergence-based termination requires all three conditions:
 The first output at the lower bound is excluded from those $50$ additional updates. Independently, the solver terminates when $k=K_{\mathrm{max}}=20000$. Rejected trial evaluations are excluded from $k$ but their computation time is included.
 
 ## Run directly in Spyder
-
-The Spyder entry scripts are one directory above this file. Open `../run_signal.py`,
-`../run_general_a.py`, `../run_mnist.py`, or `../run_all.py`.
 
 Python 3.10 or newer is required. Extract the entire archive before running it.
 The outer repository folder contains this README and the four `run_*.py` entry
@@ -268,7 +265,7 @@ scripts for automatic plotting and editable quick-mode settings.
 
 The figures follow the style of the supplied comparison-experiment plots:
 Times-style serif fonts, blue solid lines for SAP-ADMM, gray dashed lines for
-SAP-ADMM-H, shared legends, and light dashed grids. Signal plots show the
+SAP-ADMM<sup>H</sup>, shared legends, and light dashed grids. Signal plots show the
 mean F1 score with a one-sample-standard-deviation band; stacked bars show
 the same four F1 categories with percentage labels. The general-A figure
 shows mean F1, mean iteration count, and mean MSE from left to right.
@@ -311,12 +308,12 @@ python -m experiments.run_all --out results
 
 ## Configuration and paper correspondence
 
-Paths in this section and the tables below are relative to this folder.
+Paths in this section and the tables below are relative to the inner `SAP_ADMM/` folder.
 
 | Experiment | Configuration file | Solver entry point | Paper results |
 | --- | --- | --- | --- |
 | Signal, $(\alpha,t)=(15,1.5)$ | `experiments/config/signal.json` | `sap_admm` | Signal MSE, time, and support recovery |
-| Signal, $(\alpha,t)=(2,1)$ with restart | Same configuration; `restart_iter=1000` | `sap_admm_halpern` | SAP-ADMM-H signal entries |
+| Signal, $(\alpha,t)=(2,1)$ with restart | Same configuration; `restart_iter=1000` | `sap_admm_halpern` | SAP-ADMM<sup>H</sup> signal entries |
 | General $A$ | `experiments/config/general_a.json` | `sap_admm_generalA` | Sensitivity to $N_{\mathrm{max}}$ |
 | MNIST | `experiments/config/mnist.json`, nested `admm` settings | `sap_admm_image` | SAP-ADMM image-quality entries |
 
@@ -339,4 +336,4 @@ The supplied table CSVs are in `paper_reference/user_results/`. The experimental
 
 ## Citation and license
 
-Use `CITATION.cff` or `CITATION.bib` to cite the associated manuscript. The source code is distributed under the MIT License in `LICENSE`. Third-party software and image-input information are documented in `THIRD_PARTY_NOTICES.md`.
+Inside `SAP_ADMM/`, use `CITATION.cff` or `CITATION.bib` to cite the associated manuscript. The source code is distributed under the MIT License in `LICENSE`. Third-party software and image-input information are documented in `THIRD_PARTY_NOTICES.md`.
