@@ -1,0 +1,2 @@
+﻿Nmax,Trials,MeanIterations,MeanF1,MinF1,ExactF1Count,MeanMSE,MeanTime_s
+200,20,8239.95,1.0,1.0,20,0.00343656234745838,6.110078871250005

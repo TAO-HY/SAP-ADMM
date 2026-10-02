@@ -1,0 +1,5 @@
+# User-supplied rerun summaries (2026-10-02)
+
+These three uploaded CSVs are the source of the current experimental-section tables. They are user-reported aggregate outputs, not new solver runs performed during this update. Signal MSE/time and MNIST quality/time files serialize approximately six significant digits; table values are rounded half up at the manuscript display precision. General-A mean iterations are displayed as 8239.95 at two decimal places, as requested. The MNIST Avg. row is the arithmetic mean over digits 0 through 9, before manuscript rounding. Relative improvements are computed from those means.
+
+The code now implements the requested general-A boundary of 4000 effective updates. These summary CSVs do not themselves encode that boundary or full resolved configurations, so they do not independently prove which source revision generated them. Timing is taken directly from the supplied CSVs. Historical Linux validation data in verification/ is retained separately and must not be represented as rerun data for the corrected boundary.

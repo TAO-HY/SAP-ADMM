@@ -1,0 +1,7 @@
+# Versions used for the October 2, 2026 verification on Python 3.12.
+# This is a verification environment, not the unknown original Windows environment.
+numpy==2.3.5
+scipy==1.17.0
+matplotlib==3.10.8
+Pillow==12.3.0
+threadpoolctl==3.6.0

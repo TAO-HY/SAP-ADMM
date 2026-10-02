@@ -1,0 +1,30 @@
+{
+  "experiment": "general rectangular matrix A",
+  "config": {
+    "n": 1000,
+    "m": 800,
+    "trials": 20,
+    "impulse_prob": 0.05,
+    "gaussian_std": 0.2,
+    "impulse_scale": 10,
+    "support_tol": 1e-06,
+    "Nmax_list": [
+      200
+    ],
+    "alpha": 15,
+    "t": 1.5,
+    "max_iter": 20000,
+    "tol_stop": 0.0002,
+    "rho": 0.0006,
+    "beta": null,
+    "lambda_0": 0.0018,
+    "lambda_p": null,
+    "nu0": 2,
+    "blas_threads": 1,
+    "min_iterations_after_floor": 50
+  },
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "random_generator": "NumPy RandomState (MT19937)"
+}

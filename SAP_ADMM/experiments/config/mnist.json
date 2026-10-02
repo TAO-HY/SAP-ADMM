@@ -1,0 +1,36 @@
+{
+  "digits": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "trials": 20,
+  "rng_base": 20260602,
+  "impulse_prob": 0.1,
+  "gaussian_std": 0.2,
+  "admm": {
+    "max_iter": 20000,
+    "stop_tol": 0.0004,
+    "nu0": 0.1,
+    "nu_decay": 0.99,
+    "decay_first_image_bar": true,
+    "rho_scale": 0.5,
+    "beta_factor": 10,
+    "beta_eps": 1e-08,
+    "lambda1_factor": 2,
+    "lambda2_capped": 8e-05,
+    "acc_alpha": 15,
+    "acc_t": 1.5,
+    "max_fail": 500,
+    "min_iterations_after_floor": 50
+  },
+  "ssim_mode": "local",
+  "gmsd_boundary": "replicate"
+}

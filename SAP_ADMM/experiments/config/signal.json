@@ -1,0 +1,32 @@
+{
+  "n": 1000,
+  "trials": 50,
+  "probabilities": [
+    0.0,
+    0.05,
+    0.1,
+    0.15,
+    0.2
+  ],
+  "gaussian_std": 0.5,
+  "impulse_scale": 10.0,
+  "support_tol": 1e-06,
+  "max_iter": 20000,
+  "stop_tol": 0.0002,
+  "alpha": 15,
+  "t": 1.5,
+  "max_fail": 500,
+  "restart_iter": 1000,
+  "figure_max_fail": 2000,
+  "nu0": 2.0,
+  "nu_switch_updates": 1500,
+  "nu_decay_early": 0.999,
+  "nu_decay_late": 0.95,
+  "recovery_seed": 20261001,
+  "min_iterations_after_floor": 50,
+  "rho_scale": 2.0,
+  "beta_factor": 6,
+  "beta_eps": 1e-08,
+  "lambda1_factor": 500,
+  "lambda2_capped": 0.016
+}

@@ -1,0 +1,16 @@
+include LICENSE
+include CITATION.cff
+include CITATION.bib
+include REFERENCES.bib
+include CONTRIBUTING.md
+include THIRD_PARTY_NOTICES.md
+recursive-include experiments *.py *.json *.npz
+recursive-include tests *.py
+recursive-include results .gitkeep
+
+recursive-include paper_reference *.tex *.pdf
+recursive-include experiments/inputs *.md
+
+include requirements*.txt
+recursive-include verification *.md *.json *.csv *.npz
+

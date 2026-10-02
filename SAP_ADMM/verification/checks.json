@@ -1,0 +1,34 @@
+{
+  "benchmark_checks": {
+    "signal": {
+      "solves": 500,
+      "stop_reasons": {
+        "converged": 496,
+        "max_iter": 4
+      }
+    },
+    "mnist": {
+      "solves": 200,
+      "stop_reasons": {
+        "converged": 200
+      }
+    },
+    "general_a": {
+      "solves": 100,
+      "stop_reasons": {
+        "converged": 100
+      }
+    }
+  },
+  "original_general_A_outputs_equal": true,
+  "regression_tests": 9,
+  "table_widths_pt": [
+    322.37833,
+    365.86768,
+    276.73322,
+    272.41911
+  ],
+  "siam_textwidth_pt": 370.38374,
+  "validation_source_version": "1.0.1",
+  "general_a_early_effective_updates": 4001
+}
