@@ -2,7 +2,7 @@
 
 This repository uses **SAP-ADMM to solve signal denoising and image denoising problems** from *A Safeguarded Accelerated Proximal ADMM Algorithm for Solving Structured Cardinality Penalized Optimization Problems*, by Wei Bian, Hongyuan Tao, and Fan Wu. The experiments compare the ℓ<sub>1</sub>–C<sub>ℓ₁</sub>, ℓ<sub>1</sub>–ℓ<sub>1/2</sub>, ℓ<sub>1</sub>–ℓ<sub>1</sub>, ℓ<sub>2</sub>–ℓ<sub>1/2</sub> and ℓ<sub>2</sub>–ℓ<sub>0</sub> models.
 
-All solvers, metrics and plots run in Python; MATLAB and MATLAB Engine are not required. SDCAM and pADMM are independent implementations of the mathematical algorithms in [1,2], rather than redistributed copies of those authors' software.
+All solvers, metrics and plots run in Python. SDCAM and pADMM are independent implementations of the mathematical algorithms in [1,2], rather than redistributed copies of those authors' software.
 
 ## Optimization models and corresponding solvers
 
@@ -87,10 +87,10 @@ Here ⊗ denotes the Kronecker product. The matrix L<sub>nᵢ</sub> has −1 on 
 **General matrix A:** the additional ℓ<sub>1</sub>–C<sub>ℓ₁</sub> experiment solves
 
 ```math
-\min_{x,y}\ \|Ax-\hat b\|_1/m+\lambda_p\|Dx-y\|+\lambda_0\Phi(y).
+\min_{x,y}\ \|Ax-\hat b\|_1/r+\lambda_p\|Dx-y\|+\lambda_0\Phi(y).
 ```
 
-Here m=800 is the number of observations, n=1000, and A ∈ ℝ<sup>m×n</sup> is generated with independent standard Gaussian entries and normalized to ‖A‖ = 1. The clean signal b and difference matrix D are constructed as in the identity-matrix signal experiment, and b̂ is generated from Ab. Gaussian standard deviation is 0.2 and additive impulse probability is 0.05. Each of the 20 instances is reused for N<sub>max</sub> ∈ {200,300,400,500,600}.
+Here r=800 is the number of observations, n=1000, and A ∈ ℝ<sup>r×n</sup> is generated with independent standard Gaussian entries and normalized to ‖A‖ = 1. The clean signal b and difference matrix D are constructed as in the identity-matrix signal experiment, and b̂ is generated from Ab. Gaussian standard deviation is 0.2 and additive impulse probability is 0.05. Each of the 20 instances is reused for N<sub>max</sub> ∈ {200,300,400,500,600}.
 
 ## SAP-ADMM parameters and continuation
 
@@ -98,7 +98,7 @@ The parameters for the ℓ<sub>1</sub>–C<sub>ℓ₁</sub> model are listed bel
 
 | Parameter | Signal | General A | MNIST |
 | --- | --- | --- | --- |
-| L<sub>f</sub> | 1/√n | 1/√m | 1/√n |
+| L<sub>f</sub> | 1/√n | 1/√r | 1/√n |
 | λ<sub>p</sub> | 500L<sub>f</sub> | 500L<sub>f</sub> | 2L<sub>f</sub> |
 | λ<sub>0</sub> | 0.016 | 0.0018 | 8×10<sup>−5</sup> |
 | ρ | 2/n | 0.6/n | 0.5/n |
@@ -194,17 +194,17 @@ For the ℓ<sub>2</sub>–ℓ<sub>0</sub> model above, the proximal ADMM scheme 
 The parameters are
 
 ```math
-\lambda_{\ell_0}=200,\quad r=100,\quad\rho_{\mathrm{pADMM}}=1.9,
-\quad M_2^k=0,\quad M_1^k=(4r+10^{-8})I-rD^\top D.
+\lambda_{\ell_0}=200,\quad r_{\mathrm{pADMM}}=100,\quad\rho_{\mathrm{pADMM}}=1.9,
+\quad M_2^k=0,\quad M_1^k=(4r_{\mathrm{pADMM}}+10^{-8})I-r_{\mathrm{pADMM}}D^\top D.
 ```
 
-Initialize x<sup>0</sup>=b̂, y<sup>0</sup>=0, z<sup>0</sup>=0, where z is the unscaled dual variable. With β<sub>0</sub>=4r+10<sup>−8</sup>,
+Initialize x<sup>0</sup>=b̂, y<sup>0</sup>=0, z<sup>0</sup>=0, where z is the unscaled dual variable. With $\beta_0=4r_{\mathrm{pADMM}}+10^{-8}$,
 
 ```math
 \begin{aligned}
-y^{k+1}&=\mathrm{hard}_{\sqrt{2\lambda_{\ell_0}/r}}(Dx^k+z^k/r),\\
-x^{k+1}&=\frac{\hat b+\beta_0x^k-D^\top[z^k+r(Dx^k-y^{k+1})]}{1+\beta_0},\\
-z^{k+1}&=z^k+\rho_{\mathrm{pADMM}}r(Dx^{k+1}-y^{k+1}).
+y^{k+1}&=\mathrm{hard}_{\sqrt{2\lambda_{\ell_0}/r_{\mathrm{pADMM}}}}(Dx^k+z^k/r_{\mathrm{pADMM}}),\\
+x^{k+1}&=\frac{\hat b+\beta_0x^k-D^\top[z^k+r_{\mathrm{pADMM}}(Dx^k-y^{k+1})]}{1+\beta_0},\\
+z^{k+1}&=z^k+\rho_{\mathrm{pADMM}}r_{\mathrm{pADMM}}(Dx^{k+1}-y^{k+1}).
 \end{aligned}
 ```
 
@@ -352,7 +352,7 @@ Paths below are relative to the inner `SAP_ADMM/` folder.
 | `sdcam.lambda_half_l1`, `sdcam.lambda_half_l2` | Half-penalty coefficients for the two losses |
 | `sdcam.lambda_init`, `sdcam.lambda_min` | Smoothing start and threshold |
 | `sdcam.max_inner` | Update cap **per stage** |
-| `padmm.lambda_l0`, `padmm.r`, `padmm.relaxation` | λ<sub>ℓ₀</sub>, r, ρ<sub>pADMM</sub> |
+| `padmm.lambda_l0`, `padmm.r`, `padmm.relaxation` | λ<sub>ℓ₀</sub>, r<sub>pADMM</sub>, ρ<sub>pADMM</sub> |
 
 Each experiment saves `metadata.json`, `results.npz`, `trial_metrics.csv` and `summary.csv`. Signal and MNIST also save `solver_diagnostics.json` and compact `paper_mse_time_table.csv` / `paper_quality_time_table.csv`. Signal illustrative inputs and outputs are in `recovery_example.npz`.
 
